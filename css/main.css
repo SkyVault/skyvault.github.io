@@ -3,10 +3,49 @@ body {
     padding: 0;
 }
 
+#RecentBlogEntries {
+    width: 100%;
+    float: none;
+}
+
+#RecentBlogEntries h3{
+    text-align: center;
+}
+
+#NotableProjects {
+    height: 35%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#NotableProjects h3 {
+    text-align: center;
+}
+
+#Projects {
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.ProjectCard {
+    height: 50%;
+    width: 25vw;
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 5px;
+}
+
 #Header {
     background-color: #000;
-    position: fixed;
+/*   position: fixed; */
     top: 0;
+    padding-top: 0.15%;
+    padding-bottom: 0.15%;
     width: 100%;
     text-align: center;
     color: white;
