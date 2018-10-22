@@ -68,23 +68,6 @@ body {
     text-align: center;
 }
 
-#PostPage {
-    width: 100%;
-}
-
-#PostPageContents {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#PostPageContents #header{
-    width: 100vw;
-    margin-left: -50%; /* hack */
-    margin-right: auto;
-}
-
-#PostPageContents h1 { text-align: center; }
 
 /*
 #PostPageContents h2 { text-align: center; }

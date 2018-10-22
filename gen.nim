@@ -19,7 +19,7 @@ const Projects = [
   """)
 ]
 
-proc postPage(contents = "") : string
+proc postPage(contents : string, headers : seq[string]) : string
 
 # Get list of posts
 var entries = newSeq[string]()
@@ -38,19 +38,36 @@ for kind, entry in walkDir(getCurrentDir() & "/entries"):
 
       # Process the file
       let contents = readFile(outPath)
-      writeFile(outPath, postPage contents)
+
+      let html = parseHtml contents
+      var headers = newSeq[string]()
+      for h2 in html.findAll("h2"):
+        headers.add h2.innerText()
+
+      writeFile((string)outPath, postPage(contents, headers))
 
   else: discard
 
-proc postPage(contents="") : string=
+proc postPage(contents : string, headers : seq[string]) : string=
   proc postPageTmpl(contents : string) : string = tmpli html"""
     <html>
       <head>
         <title> Bla </title>
         <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/blogEntry.css">
       </head>
 
       <body id="PostPage">
+
+        <!-- Side navigation -->
+        <div class="sidenav">
+          <a class="backbutton" href="../index.html"> < </a>
+
+          $for h in headers {
+            <a href="#">$h</a>
+          }
+        </div>
+
         <div id="PostPageContents">
           $contents
           <a href="../index.html"> Back </a>
