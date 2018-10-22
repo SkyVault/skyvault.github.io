@@ -1,5 +1,4 @@
 ---
-date: 2018-22-18
 title: "Testing"
 ---
 
