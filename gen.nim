@@ -1,16 +1,9 @@
 import system, os, ospaths, osproc, strformat, json
 import templates
 import strutils
-
+import xmltree
+import htmlparser
 import libcurl
-
-proc projectCard(name : string, url = "", desc = "") : string = tmpli html"""
-  <div class="ProjectCard">
-    <h4> $name </h4>
-    <h5> $desc </h5>
-    <a href="$url" target="_blank"> View </a>
-  </div>
-  """
 
 const Projects = [
   ("Coral", "https://github.com/SkyVault/Coral", """
@@ -26,7 +19,68 @@ const Projects = [
   """)
 ]
 
-proc index(names : seq[string] = @[]) : string = tmpli html"""
+proc postPage(contents = "") : string
+
+# Get list of posts
+var entries = newSeq[string]()
+var posts = newSeq[(string, string)]()
+
+for kind, entry in walkDir(getCurrentDir() & "/entries"):
+  case kind:
+  of pcFile:
+    let (dir, name, ext) = splitFile(entry)
+    if ext == ".md":
+      entries.add entry
+      let outPath = getCurrentDir() & "/output/" & name & ".html"
+      posts.add (name, outPath)
+
+      discard execShellCmd(&"pandoc {entry} -s --highlight-style zenburn -o {outPath}")
+
+      # Process the file
+      let contents = readFile(outPath)
+      writeFile(outPath, postPage contents)
+
+  else: discard
+
+proc postPage(contents="") : string=
+  proc postPageTmpl(contents : string) : string = tmpli html"""
+    <html>
+      <head>
+        <title> Bla </title>
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+      </head>
+
+      <body id="PostPage">
+        <div id="PostPageContents">
+          $contents
+          <a href="../index.html"> Back </a>
+        </div>
+      </body>
+    </html>
+    """
+
+  return postPageTmpl contents
+
+proc blogPostCard(name : string, url = "") : string = tmpli html"""
+  <div class="ProjectCard">
+    <div class="InnerProjectCard">
+      <h4 class="CardHeader"> $name </h4>
+      <a href="$url"> View </a>
+    </div>
+  </div>
+  """
+
+proc projectCard(name : string, url = "", desc = "") : string = tmpli html"""
+  <div class="ProjectCard">
+    <div class="InnerProjectCard">
+      <h4 class="CardHeader"> $name </h4>
+      <h5> $desc </h5>
+      <a href="$url" target="_blank"> View </a>
+    </div>
+  </div>
+  """
+
+proc index(names : seq[(string, string)] = @[]) : string = tmpli html"""
   <html>
     <head>
       <title> Sky Vault </title>
@@ -51,31 +105,15 @@ proc index(names : seq[string] = @[]) : string = tmpli html"""
         <div id="RecentBlogEntries">
           <h3> Recent Blog Entries </h3>
 
-          <ul>
+          <div id="Projects">
             $for e in names {
-              <li> $e </li>
+              $(blogPostCard(e[0], e[1]))
             }
-          </ul>
-          <button> View all </button>
+          </div>
         </div>
       </div>
     <body>
   </html>
   """
 
-# Get list of posts
-
-var entries = newSeq[string]()
-var names = newSeq[string]()
-
-for kind, entry in walkDir(getCurrentDir() & "/entries"):
-  case kind:
-  of pcFile:
-    let (dir, name, ext) = splitFile(entry)
-    if ext == ".md":
-      entries.add entry
-      names.add name
-      discard execShellCmd(&"pandoc {entry} -o {getCurrentDir() & \"/output/\" & name & \".html\"}")
-  else: discard
-
-writeFile("index.html", index names)
+writeFile("index.html", index posts)
