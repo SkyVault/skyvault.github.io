@@ -23,7 +23,10 @@ proc postPage(contents : string, headers : seq[string]) : string
 
 # Get list of posts
 var entries = newSeq[string]()
-var posts = newSeq[(string, string)]()
+
+# name, outpath
+type PostMeta = tuple[header, description: string]
+var posts = newSeq[(string, string, PostMeta)]()
 
 for kind, entry in walkDir(getCurrentDir() & "/entries"):
   case kind:
@@ -32,7 +35,6 @@ for kind, entry in walkDir(getCurrentDir() & "/entries"):
     if ext == ".md":
       entries.add entry
       let outPath = getCurrentDir() & "/output/" & name & ".html"
-      posts.add (name, outPath)
 
       discard execShellCmd(&"pandoc {entry} -s --highlight-style zenburn -o {outPath}")
 
@@ -43,6 +45,8 @@ for kind, entry in walkDir(getCurrentDir() & "/entries"):
       var headers = newSeq[string]()
       for h2 in html.findAll("h2"):
         headers.add h2.innerText()
+
+      posts.add (name, outPath, (header: headers[headers.len-1], description: "Nothing"))
 
       writeFile((string)outPath, postPage(contents, headers))
 
@@ -78,10 +82,11 @@ proc postPage(contents : string, headers : seq[string]) : string=
 
   return postPageTmpl contents
 
-proc blogPostCard(name : string, url = "") : string = tmpli html"""
+proc blogPostCard(name : string, meta : PostMeta, url = "") : string = tmpli html"""
   <div class="ProjectCard">
     <div class="InnerProjectCard">
       <h4 class="CardHeader"> $name </h4>
+      <p> $(meta.description) </p>
       <a href="$url"> View </a>
     </div>
   </div>
@@ -97,7 +102,7 @@ proc projectCard(name : string, url = "", desc = "") : string = tmpli html"""
   </div>
   """
 
-proc index(names : seq[(string, string)] = @[]) : string = tmpli html"""
+proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"""
   <html>
     <head>
       <title> Sky Vault </title>
@@ -124,7 +129,7 @@ proc index(names : seq[(string, string)] = @[]) : string = tmpli html"""
 
           <div id="Projects">
             $for e in names {
-              $(blogPostCard(e[0], e[1]))
+              $(blogPostCard(e[0], e[2], e[1]))
             }
           </div>
         </div>
