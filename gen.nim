@@ -42,11 +42,19 @@ for kind, entry in walkDir(getCurrentDir() & "/entries"):
       let contents = readFile(outPath)
 
       let html = parseHtml contents
+
       var headers = newSeq[string]()
+      var description = ""
+
       for h2 in html.findAll("h2"):
         headers.add h2.innerText()
+      
+      # Get the description, should be the first paragraph
+      for p in html.findAll "p":
+        description = p.innerText()
+        break
 
-      posts.add (name, outPath, (header: headers[headers.len-1], description: "Nothing"))
+      posts.add (name, &"output/{name}.html", (header: headers[headers.len-1], description: description))
 
       writeFile((string)outPath, postPage(contents, headers))
 
