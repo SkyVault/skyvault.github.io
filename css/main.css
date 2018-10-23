@@ -116,10 +116,22 @@ body {
     margin-left: auto;
     margin-right: auto;
     height: 350px;
-    width: 50%;
+    width: 75%;
     
     display: flex;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 720px) {
+    #ProjectCards {
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        width: 100%;
+        
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .Card {
