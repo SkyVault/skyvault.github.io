@@ -108,9 +108,9 @@ proc projectCard(name : string, url = "", desc = "", img="") : string = tmpli ht
   <div class="Card">
     
     <img src="$img" alt="$name">
+    <h4> <b> $name </b> </h4>
 
     <div class="CardContainer">
-      <h4> <b> $name </b> </h4>
       <p> $desc </p>
       <a href="$url" target="_blank"> View </a>
     </div>

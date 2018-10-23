@@ -75,6 +75,7 @@ body {
 #Navbar {
     left: auto;
     right: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
 }
 
 #Navbar ul {
@@ -82,7 +83,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #000;
 
     /*
     position: -webkit-sticky;
@@ -123,7 +124,7 @@ body {
 
 .Card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     transition: 0.3s; 
     
     background-color: #666;
@@ -131,6 +132,14 @@ body {
     width: 30%;
     float: left;
     /*height: 300px;*/
+}
+
+.Card h4 {
+    background-color: #777;
+    width: 100%;
+    padding: 4px 0px 4px 0px;
+    box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.2);
+    text-align: center;
 }
 
 .Card + .Card {
@@ -151,5 +160,5 @@ body {
 
 /* Add some padding inside the card container */
 .CardContainer {
-    padding: 2px 16px;
+    padding: 0px 18px 0px 18px;
 }
