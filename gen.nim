@@ -8,15 +8,18 @@ import libcurl
 const Projects = [
   ("Coral", "https://github.com/SkyVault/Coral", """
   Coral is a simple, easy to use 2d game framework for the Nim programming language. Warning: Coral is under heavy development.
-  """),
+  """,
+  "resources/CoralLogo.png"),
 
   ("SkyVault", "https://github.com/SkyVault/SkyVault", """
     SkyVault is a 2d game developed in c++
-  """),
+  """,
+  "resources/SkyVaultLogo.PNG"),
 
   ("NimTiled", "https://github.com/SkyVault/nim-tiled", """
   Tiled map loader for the nim programming language
-  """)
+  """,
+  "resources/NimTiledLogo.png")
 ]
 
 proc postPage(contents : string, headers : seq[string]) : string
@@ -54,7 +57,8 @@ for kind, entry in walkDir(getCurrentDir() & "/entries"):
         description = p.innerText()
         break
 
-      posts.add (name, &"output/{name}.html", (header: headers[headers.len-1], description: description))
+      if posts.len < 3:
+        posts.add (name, &"output/{name}.html", (header: headers[headers.len-1], description: description))
 
       writeFile((string)outPath, postPage(contents, headers))
 
@@ -100,11 +104,14 @@ proc blogPostCard(name : string, meta : PostMeta, url = "") : string = tmpli htm
   </div>
   """
 
-proc projectCard(name : string, url = "", desc = "") : string = tmpli html"""
-  <div class="ProjectCard">
-    <div class="InnerProjectCard">
-      <h4 class="CardHeader"> $name </h4>
-      <h5> $desc </h5>
+proc projectCard(name : string, url = "", desc = "", img="") : string = tmpli html"""
+  <div class="Card">
+    
+    <img src="$img" alt="$name">
+
+    <div class="CardContainer">
+      <h4> <b> $name </b> </h4>
+      <p> $desc </p>
       <a href="$url" target="_blank"> View </a>
     </div>
   </div>
@@ -121,15 +128,27 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
         <h1> Sky Vault </h1>
       </div>
 
+      <div id="Navbar">
+        <ul>
+          <li><a href="https://www.youtube.com/channel/UCSs-Hz8pP4PcKRQCdHuAxAg?view_as=subscriber">Youtube</a></li>
+          <li><a href="https://github.com/SkyVault?tab=repositories">Github</a></li>
+          <li><a href="#">Resume</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div id="Welcome"> 
+      </div>
+
       <div>
-        <div id="NotableProjects">
-          <h3> Notable projects </h3>
-          
-          <div id="Projects">
-            $for p in Projects {
-              $(projectCard(p[0], p[1], p[2]))
-            }
-          </div>
+
+        <h3 style="text-align: center; width: 100%;"> Notable projects </h3>
+        
+        <div id="ProjectCards">
+          $for p in Projects {
+            $(projectCard(p[0], p[1], p[2], p[3]))
+          }
         </div>
 
         <div id="RecentBlogEntries">
@@ -141,6 +160,7 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
             }
           </div>
         </div>
+
       </div>
     <body>
   </html>

@@ -2,6 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family:Arial;
+
+    background-color: #444;
 }
 
 #RecentBlogEntries {
@@ -68,11 +70,86 @@ body {
     text-align: center;
 }
 
+/* Navbar */
 
-/*
-#PostPageContents h2 { text-align: center; }
-#PostPageContents h3 { text-align: center; }
-#PostPageContents h4 { text-align: center; }
-#PostPageContents h5 { text-align: center; }
-#PostPageContents h6 { text-align: center; }
-*/
+#Navbar {
+    left: auto;
+    right: auto;
+}
+
+#Navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+
+    /*
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    */
+
+}
+
+#Navbar li {
+    float: left;
+}
+
+#Navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+#Navbar li a:hover {
+    background-color: #111;
+}
+
+/* Card */
+
+#ProjectCards {
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    width: 50%;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.Card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    transition: 0.3s; 
+    
+    background-color: #666;
+
+    width: 30%;
+    float: left;
+    /*height: 300px;*/
+}
+
+.Card + .Card {
+}
+
+.Card img {
+    display: block;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* On mouse-over, add a deeper shadow */
+.Card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+}
+
+/* Add some padding inside the card container */
+.CardContainer {
+    padding: 2px 16px;
+}

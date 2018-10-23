@@ -1,5 +1,6 @@
 ---
 title: "Testing"
+date: 
 ---
 
 # Testing the post compilation :)
