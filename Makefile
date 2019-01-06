@@ -1,5 +1,5 @@
 run:
-	nim c -r gen.nim
+	nim c -o=des -r gen.nim
 
 build:
-	nim c gen.nim
+	nim c -o=des gen.nim

@@ -112,7 +112,6 @@ proc projectCard(name : string, url = "", desc = "", img="") : string = tmpli ht
 
     <div class="CardContainer">
       <p> $desc </p>
-      <a href="$url" target="_blank"> View </a>
     </div>
   </div>
   """
@@ -149,18 +148,7 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
           $for p in Projects {
             $(projectCard(p[0], p[1], p[2], p[3]))
           }
-        </div>
-
-        <div id="RecentBlogEntries">
-          <h3> Recent Blog Entries </h3>
-
-          <div id="Projects">
-            $for e in names {
-              $(blogPostCard(e[0], e[2], e[1]))
-            }
-          </div>
-        </div>
-
+        </div> 
       </div>
     <body>
   </html>
