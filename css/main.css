@@ -125,7 +125,6 @@ body {
     #ProjectCards {
         margin-left: auto;
         margin-right: auto;
-        height: 350px;
         width: 100%;
         
         display: flex;
@@ -158,6 +157,8 @@ body {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 8px;
+    box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.2);
 }
 
 
@@ -169,4 +170,60 @@ body {
 /* Add some padding inside the card container */
 .CardContainer {
     padding: 0px 18px 0px 18px;
+}
+
+/*
+ *  HEADER
+ */
+
+#AboutMeHeader {
+    height: 200px;
+    background-color: #777;
+    padding: 10px;
+    box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.2);
+}
+
+#AboutMeCenter {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 720px) {
+    #AboutMeCenter {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+#AboutMe {
+    padding-top: 0;
+    margin-top: 0;
+    float: left;
+    width: 100%;
+    height: 100%; 
+}
+
+#Me {
+    float: left;
+    height: 100%;
+    padding-right: 10px;
+}
+
+
+#AboutMeContent {
+    float: left;
+    width: 80%;
+}
+
+#AboutMeContent p {
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+
+#AboutMeContent h2 {
+    padding: 0;
+    margin: 0;
 }

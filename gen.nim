@@ -4,6 +4,7 @@ import strutils
 import xmltree
 import htmlparser
 import libcurl
+import about_me_header
 
 const Projects = [
   ("Coral", "https://github.com/SkyVault/Coral", """
@@ -94,16 +95,6 @@ proc postPage(contents : string, headers : seq[string]) : string=
 
   return postPageTmpl contents
 
-proc blogPostCard(name : string, meta : PostMeta, url = "") : string = tmpli html"""
-  <div class="ProjectCard">
-    <div class="InnerProjectCard">
-      <h4 class="CardHeader"> $name </h4>
-      <p> $(meta.description) </p>
-      <a href="$url"> View </a>
-    </div>
-  </div>
-  """
-
 proc projectCard(name : string, url = "", desc = "", img="") : string = tmpli html"""
   <div class="Card">
     
@@ -137,8 +128,7 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
         </ul>
       </div>
 
-      <div id="Welcome"> 
-      </div>
+    $(generateAboutMeHeader())
 
       <div>
 
