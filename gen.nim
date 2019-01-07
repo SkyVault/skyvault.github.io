@@ -115,7 +115,7 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
     </head>
     <body>
       <div id="Header">
-        <h1> Sky Vault </h1>
+        <h1> SkyVault </h1>
       </div>
 
       <div id="Navbar">
@@ -128,17 +128,19 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
         </ul>
       </div>
 
-    $(generateAboutMeHeader())
+        $(generateAboutMeHeader())
+        <br>
 
       <div>
 
-        <h3 style="text-align: center; width: 100%;"> Notable projects </h3>
+        <h3 style="text-align: center; width: 100%; float:none;"> Notable projects </h3>
         
         <div id="ProjectCards">
           $for p in Projects {
             $(projectCard(p[0], p[1], p[2], p[3]))
           }
         </div> 
+        <br>
       </div>
     <body>
   </html>

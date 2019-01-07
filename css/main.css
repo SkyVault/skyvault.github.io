@@ -4,7 +4,10 @@ body {
     font-family:Arial;
 
     background-color: #444;
+    font-family: Open Sans; 
 }
+
+#Header h1 { color: #ffffff; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; } 
 
 #RecentBlogEntries {
     width: 100%;
@@ -49,32 +52,30 @@ body {
 }
 
 #Header {
-    background-color: #000;
+    background-color: #333;
 /*   position: fixed; */
     top: 0;
-    padding-top: 0.15%;
-    padding-bottom: 0.15%;
+    padding-top: 0;
+    padding-bottom: 0;
     width: 100%;
     text-align: center;
     color: white;
 }
 
-/* Card styling */
-.CardHeader {
-    margin:0;
-    width: 100%;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    color: white;
-    background-color: #777;
-    text-align: center;
+#Header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4em;
 }
 
 /* Navbar */
 
 #Navbar {
+    background-color: #333;
     left: auto;
     right: auto;
+    margin: 0;
+    padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
 }
 
@@ -83,7 +84,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000;
+    background-color: #333;
 
     /*
     position: -webkit-sticky;
@@ -111,6 +112,17 @@ body {
 }
 
 /* Card */
+
+/* Card styling */
+.CardHeader {
+    margin:0;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: white;
+    background-color: #777;
+    text-align: center;
+}
 
 #ProjectCards {
     margin-left: auto;
@@ -148,7 +160,7 @@ body {
     background-color: #777;
     width: 100%;
     padding: 4px 0px 4px 0px;
-    box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     text-align: center;
 }
 
@@ -158,13 +170,21 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 8px;
-    box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.4);
 }
 
+.Card:hover img {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    box-shadow: 0 4px 26px 0 rgba(0,0,0,0.6);
+} 
 
 /* On mouse-over, add a deeper shadow */
 .Card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,0.6);
 }
 
 /* Add some padding inside the card container */
@@ -176,54 +196,81 @@ body {
  *  HEADER
  */
 
-#AboutMeHeader {
+#AboutMeHeaderContainer {
+    width: 100%;
     height: 200px;
-    background-color: #777;
     padding: 10px;
-    box-shadow: 0px 4px 4px 0 rgba(0,0,0,0.2);
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #666;
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.4);
+    margin-bottom: 0;
 }
 
-#AboutMeCenter {
+#AboutMeHeader {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-}
-
-@media only screen and (max-width: 720px) {
-    #AboutMeCenter {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-#AboutMe {
-    padding-top: 0;
-    margin-top: 0;
-    float: left;
-    width: 100%;
-    height: 100%; 
+    background-color: #666;
+    margin-bottom: 0;
 }
 
 #Me {
-    float: left;
+    width: 30%;
     height: 100%;
-    padding-right: 10px;
+    float: left;
 }
 
+#Me img {
+    height: 100%;
+    float: right; 
+    opacity: 0.8;
+    margin-right: 10px;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.4);
+} 
 
 #AboutMeContent {
-    float: left;
-    width: 80%;
-}
-
-#AboutMeContent p {
-    padding: 0;
-    margin: 0;
-    width: 80%;
+    width: 70%;
+    float: left; 
+    height: 100%;
 }
 
 #AboutMeContent h2 {
-    padding: 0;
-    margin: 0;
+    padding: 0; margin: 0;
+    margin-top: -8px;
 }
+#AboutMeContent p { padding: 0; margin: 0; }
+
+@media only screen and (max-width: 720px) {
+    #AboutMeHeader {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #666;
+    }
+    
+    #AboutMeHeaderContainer {
+        width: 100%;
+        height: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #666;
+    } 
+
+    #Me {
+        width: 10%;
+        height: 100%;
+    }
+
+    #Me img {
+        height: 100%;
+    } 
+
+    #AboutMeContent {
+        width: 80%;
+        height: 100%;
+    } 
+}
+
