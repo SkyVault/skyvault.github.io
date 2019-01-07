@@ -19,7 +19,7 @@ proc generateAboutMeHeader* () : string = tmpli html """
 
                     I have a YouTube channel where I make programming tutorials usually directed towards game development. 
                     <br>
-                    You can contact me at <a href="mailto:dustinneumann42@gmail.com">dustinneumann42@gmail.com</a>
+                    You can contact me at <br><a href="mailto:dustinneumann42@gmail.com">dustinneumann42@gmail.com</a>
                 </p>
             </div>
         </div> 
