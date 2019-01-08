@@ -72,7 +72,7 @@ proc postPage(contents : string, headers : seq[string]) : string=
       <head>
         <title> Bla </title>
         <link rel="stylesheet" type="text/css" href="../css/main.css">
-        <link rel="stylesheet" type="text/css" href="../css/blogEntry.css">
+        <link rel="stylesheet" type="text/css" href="../css/blogEntry.css"> 
       </head>
 
       <body id="PostPage">
@@ -113,6 +113,9 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
     <head>
       <title> Sky Vault </title>
       <link rel="stylesheet" type="text/css" href="css/main.css">
+
+      <!-- This might need to be on the bottom, so that our page loads first -->
+      <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet"> 
     </head>
     <body>
         $(generateHeader())
