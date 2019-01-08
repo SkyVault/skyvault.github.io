@@ -5,6 +5,8 @@ import xmltree
 import htmlparser
 import libcurl
 import about_me_header
+import blog_post_listing_page
+import header
 
 const Projects = [
   ("Coral", "https://github.com/SkyVault/Coral", """
@@ -29,7 +31,6 @@ proc postPage(contents : string, headers : seq[string]) : string
 var entries = newSeq[string]()
 
 # name, outpath
-type PostMeta = tuple[header, description: string]
 var posts = newSeq[(string, string, PostMeta)]()
 
 for kind, entry in walkDir(getCurrentDir() & "/entries"):
@@ -61,7 +62,7 @@ for kind, entry in walkDir(getCurrentDir() & "/entries"):
       if posts.len < 3:
         posts.add (name, &"output/{name}.html", (header: headers[headers.len-1], description: description))
 
-      writeFile((string)outPath, postPage(contents, headers))
+      writeFile(outPath, postPage(contents, headers))
 
   else: discard
 
@@ -114,26 +115,12 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
       <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
-      <div id="Header">
-        <h1> SkyVault </h1>
-      </div>
-
-      <div id="NavbarContainer">
-          <div id="Navbar">
-            <ul>
-              <li><a href="https://www.youtube.com/channel/UCSs-Hz8pP4PcKRQCdHuAxAg?view_as=subscriber">Youtube</a></li>
-              <li><a href="https://github.com/SkyVault?tab=repositories">Github</a></li>
-              <li><a href="#">Resume</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-      </div>
+        $(generateHeader())
 
         $(generateAboutMeHeader())
         <br>
 
-      <div>
+      <div id="Projects">
 
         <h3 style="text-align: center;"> Notable projects </h3>
         
@@ -148,4 +135,5 @@ proc index(names : seq[(string, string, PostMeta)] = @[]) : string = tmpli html"
   </html>
   """
 
+writeFile("blog_posts.html", generateBlogPostsPage posts)
 writeFile("index.html", index posts)

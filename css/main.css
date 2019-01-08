@@ -5,6 +5,13 @@ body {
 
     background-color: #444;
     font-family: Open Sans; 
+    height: 101%;
+
+    background-image: url("../resources/mountainsbg.jpg");
+    background-attachment: fixed;
+    background-position: 0 -400px;
+    background-repeat: no-repeat;
+    background-size: initial;
 }
 
 #Header h1 { color: #ffffff; font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; } 
@@ -28,12 +35,8 @@ h3 {
 }
 
 #Projects {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-
-    display:flex;
+    background-color: #222;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.4);
 }
 
 .ProjectCard {
@@ -51,26 +54,28 @@ h3 {
 }
 
 #Header {
-    background-color: #333;
+/*    background-color: #333; */
 /*   position: fixed; */
     top: 0;
-    padding-top: 8px;
-    padding-bottom: 4px;
     width: 100%;
+    height: 220px;
     text-align: center;
     color: white;
+    display: table;
+    
 }
 
 #Header h1 {
     margin: 0;
     padding: 0;
     font-size: 4em;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 /* Navbar */
 #NavbarContainer {
     width: 100%;
-    background-color: #333;
 }
 
 #Navbar {
@@ -89,7 +94,8 @@ h3 {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(20, 20, 20, 0.8);
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 1.0);
 
     /*
     position: -webkit-sticky;
@@ -154,21 +160,23 @@ h3 {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     transition: 0.3s; 
     
-    background-color: #666;
+    background-color: #333;
 
     width: 30%;
     float: left;
+    color: white;
     /*height: 300px;*/
 }
 
 .Card h4 {
-    background-color: #777;
+    background-color: #555;
     width: 100%;
     padding: 4px 0px 4px 0px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     text-align: center;
     color: #fff;
     font-family: 'Lato', sans-serif; 
+    font-weight: 300;
 }
 
 .Card img {
@@ -214,10 +222,11 @@ h3 {
     padding: 10px;
     padding-right: 0;
     padding-left: 0;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #666;
-    box-shadow: 0 0px 64px 0 rgba(0,0,0,0.4);
+    background-color: rgba(20, 20, 20, 0.8);
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 1.0);
     margin-bottom: 0;
 }
 
@@ -227,7 +236,6 @@ h3 {
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-    background-color: #666;
     margin-bottom: 0;
 }
 
@@ -265,7 +273,7 @@ h3 {
 #AboutMeContent p { color: #ddd; padding: 0; margin: 0; }
 #AboutMeContent p a {
     text-decoration: none;
-    color: #111;
+    color: #771;
     border-bottom: 1px solid #111;
 }
 
