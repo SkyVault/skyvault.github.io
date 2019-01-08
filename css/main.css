@@ -206,7 +206,11 @@ h3 {
 #AboutMeHeaderContainer {
     z-index: -1;
     width: 100%;
-    height: 200px;
+    min-height: 200px; 
+
+    display:block;
+    overflow: auto;
+
     padding: 10px;
     padding-right: 0;
     padding-left: 0;
@@ -218,7 +222,9 @@ h3 {
 }
 
 #AboutMeHeader {
-    width: 50%;
+    width: 70%; 
+    display: block;
+    overflow: hidden;
     margin-left: auto;
     margin-right: auto;
     background-color: #666;
@@ -227,22 +233,24 @@ h3 {
 
 #Me {
     width: 30%;
-    height: 100%;
     float: left;
 }
 
 #Me img {
-    height: 100%;
-    float: right; 
+    width: 100%; 
+    height: auto;
+
+    max-width: 200px;
     opacity: 0.8;
     margin-right: 10px;
     box-shadow: 0 4px 16px 0 rgba(0,0,0,0.4);
+
+    float: right;
 } 
 
 #AboutMeContent {
     width: 70%;
     float: left; 
-    height: 100%;
 }
 
 #AboutMeContent h2 {
@@ -263,31 +271,35 @@ h3 {
 
 @media only screen and (max-width: 720px) {
     #AboutMeHeader {
-        width: 50%;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
         background-color: #666;
     }
-    
+
     #AboutMeHeaderContainer {
         width: 100%;
         height: 50%;
         margin-left: auto;
         margin-right: auto;
-        background-color: #666;
     } 
 
     #Me {
-        width: 10%;
-        height: 100%;
+        width: 30%;
+        float: left;
     }
 
     #Me img {
-        height: 100%;
+        width: 100%;
+        height: auto;
+        opacity: 0.8;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 16px 0 rgba(0,0,0,0.4);
     } 
 
     #AboutMeContent {
-        width: 80%;
+        width: 70%;
         height: 100%;
     } 
 }
