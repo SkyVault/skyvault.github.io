@@ -16,7 +16,7 @@ proc generateBlogPostsPage* (names : seq[(string, string, PostMeta)] = @[]) : st
       <link rel="stylesheet" type="text/css" href="css/blogPosts.css">
     </head>
     <body>
-        $(generateHeader("SkyVault Blog"))
+        $(generateHeader("Dustin's Blog"))
 
         <div id="blog-posts-container">
           $for post in names {

@@ -41,6 +41,7 @@ for kind, entry in walkDir(getCurrentDir() & "/entries"):
       entries.add entry
       let outPath = getCurrentDir() & "/output/" & name & ".html"
 
+      echo &"Compiling blog post: {name}"
       discard execShellCmd(&"pandoc {entry} -s --highlight-style zenburn -o {outPath}")
 
       # Process the file
