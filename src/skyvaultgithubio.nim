@@ -4,9 +4,9 @@ import strutils
 import xmltree
 import htmlparser
 import libcurl
-import src/about_me_header
-import src/blog_post_listing_page
-import src/header
+import about_me_header
+import blog_post_listing_page
+import header
 
 const Projects = [
   ("Coral", "https://github.com/SkyVault/Coral", """
