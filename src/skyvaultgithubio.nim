@@ -9,6 +9,12 @@ import blog_post_listing_page
 import header
 
 const Projects = [
+  ("WorkingOn(WIP)", "https://github.com/SkyVault/WorkingOn", """
+WorkingOn is a website where you can create a blog for any project you are working on, as a user you can subscribe to those projects and get a feed of their progress.
+  """,
+   "resources/django-logo-negative.png"),
+
+
   ("Coral", "https://github.com/SkyVault/Coral", """
   Coral is a simple, easy to use 2d game framework for the Nim programming language. Warning: Coral is under heavy development.
   """,

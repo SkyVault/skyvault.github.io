@@ -17,7 +17,7 @@ proc generateHeader* (title="SkyVault"): string = tmpl html """
               <li><a href="https://github.com/SkyVault">Github</a></li>
               <li><a href="resume.pdf">Resume</a></li>
               <li><a href="./blog_posts.html">Blog</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="mailto:dustinneumann42@gmail.com">Contact</a></li>
             </ul>
           </div>
       </div>
